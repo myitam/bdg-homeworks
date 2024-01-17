@@ -1,0 +1,206 @@
+1  who
+    2  pwd
+    3  last
+    4  ls
+    5  touch Hello
+    6  ls
+    7  ls -l
+    8  ls -l -a
+    9  history
+   10  variable1=fff
+   11  echo $variable1 
+   12  variable=abc
+   13  echo $variable
+   14  cls
+   15  clear
+   16  export variable2="bdg"
+   17  env 
+   18  env | grep var
+   19  env | grep home
+   20  unset variable1
+   21  env | grep home
+   22  unset variable1
+   23  env | grep var
+   24  unset variable12
+   25  unset variable1
+   26  clear
+   27  alias t= ls /tmp
+   28  alias t = ls /tmp
+   29  aliast = ls /tmp
+   30  alias t=ls /tmp
+   31  alias
+   32  alias t='ls /tmp'
+   33  t
+   34  call 2024
+   35  cal 2024
+   36  apt get cal
+   37  cal 2024
+   38  sudo apt install 0-y cal
+   39  sudo apt install -y cal
+   40  sudo apt search cal
+   41  sudo apt search cal | grep cal
+   42  sudo apt update
+   43  sudo apt install cal
+   44  sudo apt-get -y install calendar
+   45  cal 2024
+   46  calendar 2024
+   47  cal 
+   48  ca
+   49  cal
+   50  calendar 06 2024
+   51  calendar -06 2024
+   52  calendar -06 -2024
+   53  calendar -- 2024
+   54  calendar
+   55  clear
+   56  mkdir test
+   57  cd test/
+   58  ls -la
+   59  ls -l /etc/passwd
+   60  which ls
+   61  which ls -l /usr/ls
+   62  ls -l /usr/ls
+   63  ls /usr/ls
+   64  ls /usr/lsid
+   65  cd
+   66  id
+   67  cd /root/
+   68  ls -la /root/
+   69  ls -l /root/
+   70  id
+   71  cat /etc/passwd
+   72  rm /etc/passwd
+   73  cal 5 2024
+   74  calendar 5 2024
+   75  clear
+   76  touch /tmp/TEST
+   77  ls -l test/
+   78  cd /tmp/
+   79  ls
+   80  ls -l TEMP
+   81  chmod a=rw TEMP
+   82  ls
+   83  chmod a=rw TEST
+   84  ls -l TEST
+   85  chmod u=rw, g=rw, o-r TEST
+   86  chmod u=rwx, g=rwx, o=r TEST
+   87  chmod u= rwx, g=rwx, o=r TEST
+   88  chmod u=rwx,g=rwx,o=r TEST
+   89  ls -l TEST
+   90  chmod 771 TEST
+   91  chmod 111 TEST
+   92  chmod 661 TEST
+   93  clear
+   94  umask
+   95  umask 662
+   96  touch test3
+   97  ls -l test3
+   98  locate passwd
+   99  apt-get install locate
+  100  sudo apt-get install locate
+  101  locate passwd
+  102  cd
+  103  locate passwd
+  104  locate
+  105  locate test
+  106  locate /test
+  107  locate paswd
+  108  locate passwd
+  109  ls /fake
+  110  ls / grep a
+  111  ls | grep a
+  112  clear
+  113  ls
+  114  ls -l >aa
+  115  car aa
+  116  cat aa
+  117  rm aa 
+  118  ls >aa
+  119  a
+  120  cat aa
+  121  rm aa 
+  122  ls >aa
+  123  ls -l >>aa
+  124  cat aa
+  125  ls -l
+  126  ls -l /fake > ls -output
+  127  ls -l /fake >> ls output
+  128  free -m
+  129  pc
+  130  sudo apt install fp-compiler-3.2.2
+  131  pc
+  132  ps
+  133  pc
+  134  pc -if
+  135  ps -if
+  136  ps -ef
+  137  ps
+  138  ps -ef -forest
+  139  ps -ef --forest
+  140  ps -u root
+  141  ps -u artur
+  142  ls
+  143  cd test
+  144  cd
+  145  tmp
+  146  alias tmp = ls /tmp
+  147  alias "tmp" = ls /tmp
+  148  alias "tmp"= ls /tmp
+  149  alias "tmp"= "ls /tmp"
+  150  alias "tmp"="ls /tmp"
+  151  tmp
+  152  unalias tmp
+  153  tmp
+  154  Print "The apartment costs $100000"
+  155  echo "The apartment costs $100000"
+  156  echo "Hello; World"
+  157  variable cost=5000
+  158  variable "cost"="5000"
+  159  $cost="5000"
+  160  $cost=5000
+  161  export cost=5000
+  162  $cost
+  163  echo $cost
+  164  man diff
+  165  man call
+  166  man cal
+  167  man call
+  168  man diff
+  169  man call
+  170  man calendar
+  171  calendar 5 2024
+  172  calendar
+  173  calendar -t [[cc]yy]mm]dd
+  174  calendar -t [[[cc]yy]mm]dd
+  175  calendar -t 2028
+  176  date
+  177  man calendar
+  178  calendar --help
+  179  sudo calendar --help
+  180  calendar -abw
+  181  sudo su
+  182  cd
+  183  history 
+  184  ls
+  185  cd
+  186  ls
+  187  mkdir first-directory
+  188  mv first-file first-directory/
+  189  ls
+  190  cd first-directory/
+  191  ls
+  192  cd
+  193  mv first-directory/ /tmp/
+  194  cd /tmp/
+  195  ls
+  196  rm first-directory/
+  197  rm -r first-directory/
+  198  ls
+  199  cd
+  200  ls
+  201  history > history2.txt
+  202  cat history2.txt 
+  203  sudo su
+  204  history 
+  205  history > history2.txt
+

@@ -1,0 +1,114 @@
+352  clear
+  353  useradd jane
+  354  sudo useradd jane
+  355  sudo userdel jane
+  356  ls
+  357  cd /home/
+  358  ls
+  359  man useradd
+  360  sudo useradd -m ani
+  361  ls
+  362  sudo userdel ani
+  363  ls
+  364  rm ani
+  365  rm /ani
+  366  sudo rm /ani
+  367  sudo rm ani/
+  368  sudo rm -f ani
+  369  sudo rm -R ani
+  370  ls
+  371  sudo useradd -mk /home/artur aram
+  372  ls
+  373  sudo ls aram
+  374  sudo groupadd -g 1500 researcher
+  375  usermod -g researcher
+  376  usermod aram -g researcher
+  377  sudo usermod aram -g researcher
+  378  id aram
+  379  sudo usermod aram -G sudo
+  380  passwd aram
+  381  sudo passwd aram
+  382  sudo su aram
+  383  su aram
+  384  cd
+  385  su aram
+  386  cat /etc//passwd
+  387  cat /etc//passwd | grep aram
+  388  cat /etc//passwd | grep artur
+  389  sudo userdel aram
+  390  sudo usermod aram -g aram
+  391  sudo groupdel aram
+  392  ls
+  393  cd /home/
+  394  ls
+  395  sudo rm -R aram/
+  396  ls
+  397  cd
+  398  touch test-file-assignment
+  399  ls
+  400  mkdir test-file-assignment
+  401  mkdir test-directory-assignment
+  402  ll test-file-assignment > output-file
+  403  cat output-file
+  404  ll test-directory-assignment > outout-directory
+  405  sudo useradd test
+  406  sudo usermode test -G researcher
+  407  sudo usermod test -G researcher
+  408  chown test test-file-assignment
+  409  sudo chown test test-file-assignment
+  410  sudo chgrp -R researcher  test-directory-assignment
+  411  chmod 107 test-file-assignment
+  412  sudo chmod 107 test-file-assignment
+  413  sudo chmod 700 test-directory-assignment
+  414  ll test-file-assignment >> output-file > output-file
+  415  ll test-directory-assignment >> outout-directory > outout-directory
+  416  ls /usr/share/man/man1/
+  417  man intro
+  418  sudo userdel test
+  419  sudo groupdel test
+  420  sudo groupdel researcher
+  421  sudo userdel nara
+  422  sudo groupdel researcher
+  423  ll test-file-assignment >> output-file output-file
+  424  ll test-directory-assignment >> outout-directory outout-directory
+  425  cp /etc/shadow /tmp/
+  426  sudo cp /etc/shadow /tmp/
+  427  passwd
+  428  id root
+  429  sudo passwd
+  430  diff /tmp/shadow /etc/shadow
+  431  sudo diff /tmp/shadow /etc/shadow
+  432  cp /etc/passwd /etc/group /tmp
+  433  cd /tmp
+  434  ls
+  435  cd
+  436  sudo useradd jane
+  437  man useradd
+  438  sudo useradd -c testcomm jane
+  439  sudo usermod -c "testcomm" jane
+  440  sudo usermod -G sudo jane
+  441  diff /tmp/group /tmp/passwd
+  442  man diff
+  443  diff /tmp/group /etc/group
+  444  diff /tmp/passwd /etc/passwd
+  445  sudo gpasswd -d jane sudo
+  446  diff /tmp/group /etc/group
+  447  diff /tmp/passwd /etc/passwd
+  448  crontab -e
+  449  wget  https://github.com/prometheus/node_exporter/releases/download/v1.0.1/node_exporter-1.0.1.linux-amd64.tar.gz
+  450  sudo groupadd -f node_exporter
+  451  sudo useradd -g node_exporter --no-create-home --shell /bin/false node_exporter
+  452  sudo mkdir /etc/node_exporter
+  453  sudo chown node_exporter:node_exporter /etc/node_exporter
+  454  tar -xvf node_exporter-1.0.1.linux-amd64.tar.gz
+  455  mv node_exporter-1.0.1.linux-amd64 node_exporter-files
+  456  sudo cp node_exporter-files/node_exporter /usr/bin/
+  457  sudo chown node_exporter:node_exporter /usr/bin/node_exporter
+  458  sudo vi /usr/lib/systemd/system/node_exporter.service
+  459  sudo chmod 664 /usr/lib/systemd/system/node_exporter.service
+  460  sudo systemctl daemon-reload
+  461  sudo systemctl start node_exporter
+  462  sudo systemctl status node_exporter
+  463  sudo systemctl enable node_exporter.service
+  464  rm -rf node_exporter-1.0.1.linux-amd64.tar.gz node_exporter-files
+  465  hystory

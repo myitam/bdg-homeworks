@@ -1,0 +1,43 @@
+478  clear
+  479  sudo useradd --no-create-home --shell /bin/false prometheus
+  480  wget https://github.com/prometheus/prometheus/releases/download/v2.32.1/prometheus-2.32.1.linux-amd64.tar.gz
+  481  tar -xvf prometheus-2.32.1.linux-amd64.tar.gz
+  482  sudo mkdir -p /data /etc/prometheus
+  483  cd prometheus-2.32.1.linux-amd64
+  484  sudo mv prometheus promtool /usr/local/bin/
+  485  sudo mv consoles/ console_libraries/ /etc/prometheus/
+  486  sudo mv prometheus.yml /etc/prometheus/prometheus.yml
+  487  sudo chown -R prometheus:prometheus /etc/prometheus/ /data/
+  488  cd
+  489  rm -rf prometheus*
+  490  prometheus --version
+  491  sudo vim /etc/systemd/system/prometheus.service
+  492  sudo systemctl enable prometheus
+  493  sudo systemctl start prometheus
+  494  sudo systemctl status prometheus
+  495  clear
+  496  sudo apt-get install -y apt-transport-https software-properties-common
+  497  wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
+  498  echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee -a /etc/apt/sources.list.d/grafana.list
+  499  sudo apt-get update
+  500  sudo apt-get -y install grafana
+  501  sudo systemctl enable grafana-server
+  502  sudo systemctl start grafana-server
+  503  sudo systemctl status grafana-server
+  504  clear
+  505  sudo vim /etc/grafana/provisioning/datasources/datasources.yaml
+  506  sudo systemctl restart grafana-server
+  507  vim /etc/prometheus/prometheus.yml
+  508  reboot
+  509  sudo vim /etc/prometheus/prometheus.yml
+  510  promtool check config /etc/prometheus/prometheus.yml
+  511  curl -X POST http://localhost:9090/-/reload
+  512  clear
+  513  history
+
+
+For Check
+
+1.   grafana.myit.am:3000   (default user and pass)
+2.   prometheus.myit.am:9090
+

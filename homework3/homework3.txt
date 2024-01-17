@@ -1,0 +1,66 @@
+apt install mariadb-server -y
+  206  mysql_secure_installation
+  207  systemctl enable --now mariadb
+  212  wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu22.04_all.deb
+  213  dpkg -i zabbix-release_6.4-1+ubuntu22.04_all.deb
+  214  apt update
+  215  apt install zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent -y
+  218  mysql
+  219  zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
+  220  mysql
+  221  vi /etc/zabbix/zabbix_server.conf
+  222  vi /etc/zabbix/nginx.conf
+  223  systemctl restart zabbix-server zabbix-agent nginx php8.1-fpm
+  224  systemctl enable zabbix-server zabbix-agent nginx php8.1-fpm
+
+
+sudo su
+apt update
+
+Install MARIADB
+apt install mariadb-server -y
+mysql_secure_installation
+systemctl enable --now mariadb
+
+INSTALL REPO
+wget https://repo.zabbix.com/zabbix/6.4/ubuntu/pool/main/z/zabbix-release/zabbix-release_6.4-1+ubuntu22.04_all.deb
+dpkg -i zabbix-release_6.4-1+ubuntu22.04_all.deb
+apt update
+
+INSTALL Zabbix Server, Frontend, Agent
+apt install zabbix-server-mysql zabbix-frontend-php zabbix-nginx-conf zabbix-sql-scripts zabbix-agent -y
+
+Create initial database (pwd chosen during mysql_secure_installation "*******")
+mysql
+create database zabbix;
+create user zabbix@localhost identified by 'Aa123456789';
+grant all privileges on zabbix.* to zabbix@localhost;
+set global log_bin_trust_function_creators = 1;
+quit;
+
+#Import Zabbix Tables. NOTE: password for zabbix DB user is required "password"
+zcat /usr/share/zabbix-sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
+
+#Modify DB Parameter
+mysql
+set global log_bin_trust_function_creators = 0;
+quit;
+
+#Configure the database for Zabbix server
+vi /etc/zabbix/zabbix_server.conf
+DBPassword=Aa123456789
+
+#Edit file /etc/zabbix/nginx.conf uncomment and set 'listen' and 'server_name' directives.
+vi /etc/zabbix/nginx.conf
+listen 8080;
+server_name example.com;
+
+#Start Zabbix
+systemctl restart zabbix-server zabbix-agent nginx php8.1-fpm
+systemctl enable zabbix-server zabbix-agent nginx php8.1-fpm
+
+##Initial Setup via Web UI using IP address of the server and then Login with Admin/zabbix
+http://zabbix.myit.am:8080
+user: Admin
+pass: zabbix
+
