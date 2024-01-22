@@ -1,0 +1,52 @@
+835  clear
+  836  git branch
+  837  cd tmp/first-git/
+  838  git branch
+  839  git branch homework-7
+  840  git branch
+  841  git branch homework-7
+  842  git checkout homework-7
+  843  ls -la
+  844  mkdir homework-7
+  845  git add homework-7
+  846  git commit -m "createing new homework"
+  847  git status
+  848  git ststus
+  849  git status
+  850  ls
+  851  cd homework-7
+  852  git commit -m "createing new homework"
+  853  cd ..
+  854  ls -la
+  855  git branch homework-7
+  856  git push
+  857  git push --set-upstream origin homework-7
+  858  cd homework-7/
+  859  touch file1
+  860  touch file2
+  861  touch file3
+  862  git commit -m "adding new files 1,2,3"
+  863  git add .
+  864  git commit -m "adding new files 1,2,3"
+  865  git push
+  866  git log
+  867  git log --oneline
+  868  git checkout 2ad1494 -- file1
+  869  git checkout 2ad1494 -- file2
+  870  git commit -m "revomed file1 and file2"
+  871  git log
+  872  git status
+  873  ls
+  874  nano file1
+  875  git diff
+  876  git status
+  877  git checkout 2ad14949db5f54c94b9620de04d760efd7e92918 -- file1
+  878  git status
+  879  nano file2
+  880  git status
+  881  git diff
+  882  git commit -m "revomed file1 and file2"
+  883  git push
+  884  git status
+  885  history
+
