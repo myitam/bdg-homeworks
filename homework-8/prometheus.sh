@@ -10,7 +10,6 @@ mv consoles/ console_libraries/ /etc/prometheus/
 cd ..
 cp ./prometheus.yml /etc/prometheus/
 chown -R prometheus:prometheus /etc/prometheus/ /data/
-rm -rf prometheus*
 cp ./prometheus.service /etc/systemd/system/
 systemctl enable prometheus
 systemctl start prometheus
