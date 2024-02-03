@@ -11,7 +11,7 @@
   845  git add homework-7
   846  git commit -m "createing new homework"
   847  git status
-  848  git ststuss
+  848  git ststus
   849  git status
   850  ls
   851  cd homework-7
