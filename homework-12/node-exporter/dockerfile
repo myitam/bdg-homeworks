@@ -1,0 +1,7 @@
+FROM ubuntu
+RUN apt update
+COPY . /var/tmp/
+WORKDIR /var/tmp/
+RUN /bin/bash -c '/var/tmp/node-exporter.sh'
+EXPOSE 9100
+ENTRYPOINT  [ "/usr/bin/node_exporter" ]
