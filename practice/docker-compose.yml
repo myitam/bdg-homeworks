@@ -1,0 +1,36 @@
+services:
+  node-exporter:
+    container_name: node-exporter
+    build: node-exporter
+    restart: always
+    ports:
+      - 9100:9100
+
+  prometheus:
+    build: prometheus
+    container_name: prometheus
+    depends_on:
+      - node-exporter
+    restart: always
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus:/prometheus
+
+  grafana:
+    build: grafana
+    container_name: grafana
+    depends_on:
+      - prometheus
+    restart: always
+    ports:
+      - 3000:3000
+    volumes:
+      - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
+      - grafana:/var/lib/grafana
+
+
+volumes:
+  grafana:
+  prometheus:
