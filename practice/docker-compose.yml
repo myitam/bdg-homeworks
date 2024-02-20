@@ -6,6 +6,7 @@ services:
     ports:
       - 9100:9100
 
+
   prometheus:
     build: prometheus
     container_name: prometheus
@@ -17,6 +18,9 @@ services:
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
       - prometheus:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+
 
   grafana:
     build: grafana
@@ -24,13 +28,14 @@ services:
     depends_on:
       - prometheus
     restart: always
+    environment:
+      - file=variable.env
     ports:
       - 3000:3000
     volumes:
       - ./grafana/datasources.yaml:/etc/grafana/provisioning/datasources/datasources.yaml
       - grafana:/var/lib/grafana
-
-
+  
 volumes:
   grafana:
   prometheus:
