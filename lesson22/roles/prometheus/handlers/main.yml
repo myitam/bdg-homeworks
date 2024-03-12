@@ -1,0 +1,4 @@
+- name: Restart systemd
+  systemd:
+    name: prometheus
+    state: restarted

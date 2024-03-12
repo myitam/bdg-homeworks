@@ -1,0 +1,7 @@
+[AWS]
+52.15.117.187 ansible_user=ubuntu
+
+[AWS:vars]
+user_name=ubuntu
+service_name=apache2
+path=item

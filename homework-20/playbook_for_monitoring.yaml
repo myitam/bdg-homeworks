@@ -1,0 +1,74 @@
+- name: Install Prometheus, Grafana, and Node Exporter on EC2 Instance
+  hosts: AWS
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Install required packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - wget
+        - unzip
+
+    - name: Download Prometheus
+      get_url:
+        url: "https://github.com/prometheus/prometheus/releases/download/v2.34.0/prometheus-2.34.0.linux-amd64.tar.gz"
+        dest: "/tmp/prometheus.tar.gz"
+
+    - name: Extract Prometheus
+      unarchive:
+        src: "/tmp/prometheus.tar.gz"
+        dest: "/opt/"
+        remote_src: yes
+
+    - name: Create Prometheus directory
+      file:
+        path: "/etc/prometheus"
+        state: directory
+
+    - name: Move Prometheus files
+      ansible.builtin.shell: "mv /opt/prometheus-*/* /etc/prometheus/"
+
+    - name: Download Node Exporter
+      get_url:
+        url: "https://github.com/prometheus/node_exporter/releases/download/v1.2.2/node_exporter-1.2.2.linux-amd64.tar.gz"
+        dest: "/tmp/node_exporter.tar.gz"
+
+    - name: Extract Node Exporter
+      unarchive:
+        src: "/tmp/node_exporter.tar.gz"
+        dest: "/opt/"
+        remote_src: yes
+
+    - name: Move Node Exporter binary
+      ansible.builtin.shell: "mv /opt/node_exporter-*/* /usr/local/bin/"
+
+    - name: Download Grafana
+      get_url:
+        url: "https://dl.grafana.com/oss/release/grafana-8.2.5.linux-amd64.tar.gz"
+        dest: "/tmp/grafana.tar.gz"
+
+    - name: Extract Grafana
+      unarchive:
+        src: "/tmp/grafana.tar.gz"
+        dest: "/opt/"
+        remote_src: yes
+
+    - name: Create grafana directory
+      file:
+        path: "/usr/share/grafana"
+        state: directory
+
+    - name: Move Grafana files
+      ansible.builtin.shell: "mv /opt/grafana-*/* /usr/share/grafana/"
+
+    - name: Start Prometheus
+      command: "/etc/prometheus/prometheus --config.file=/etc/prometheus/prometheus.yml &"
+
+    - name: Start Node Exporter
+      command: "nohup /usr/local/bin/node_exporter &"
+
+    - name: Start Grafana
+      command: "/usr/share/grafana/bin/grafana-server --config=/usr/share/grafana/conf/custom.ini &"

@@ -1,0 +1,24 @@
+- name: Install Docker on Amazon Linux 2 EC2 Instance
+  hosts: AWS
+  become: yes
+
+  tasks:
+    - name: Install required packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - docker
+        - python3-pip
+
+    - name: Start Docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+
+    - name: Install Docker Compose
+      pip:
+        name: docker-compose
+        executable: pip3
+        state: present

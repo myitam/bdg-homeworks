@@ -1,0 +1,82 @@
+- name: Install Zabbix on Amazon Linux 2 EC2 Instance
+  hosts: AWS
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Install required packages
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - httpd
+        - mariadb-server
+        - mariadb
+        - mariadb-devel
+        - php
+        - php-mysqlnd
+        - php-gd
+        - php-xml
+        - php-bcmath
+        - php-mbstring
+        - php-ldap
+        - php-xmlrpc
+        - php-json
+        - net-snmp
+        - net-snmp-utils
+        - php-pecl-apcu
+        - php-pecl-apcu-devel
+        - php-pecl-imagick
+        - php-pecl-imagick-devel
+        - zabbix-server-mysql
+        - zabbix-web-mysql
+        - zabbix-agent
+        - zabbix-get
+        - zabbix-sender
+        - zabbix-java-gateway
+        - zabbix-utils
+        - zabbix-get
+        - zabbix-sender
+        - zabbix-java-gateway
+        - zabbix-utils
+
+    - name: Start and enable MariaDB service
+      service:
+        name: mariadb
+        state: started
+        enabled: yes
+
+    - name: Initialize Zabbix database
+      command: mysql -e "create database zabbix character set utf8 collate utf8_bin;"
+      ignore_errors: yes
+
+    - name: Import Zabbix initial schema and data
+      command: zcat /usr/share/doc/zabbix-server-mysql*/create.sql.gz | mysql zabbix
+      ignore_errors: yes
+
+    - name: Configure Zabbix server timezone
+      lineinfile:
+        path: /etc/zabbix/zabbix_server.conf
+        regexp: '^#?\s*DBTimeZone='
+        line: 'DBTimeZone={{ zabbix_timezone }}'
+        state: present
+      vars:
+        zabbix_timezone: 'UTC'
+
+    - name: Start and enable Zabbix server
+      service:
+        name: zabbix-server
+        state: started
+        enabled: yes
+
+    - name: Start and enable Zabbix agent
+      service:
+        name: zabbix-agent
+        state: started
+        enabled: yes
+
+    - name: Start and enable Apache service
+      service:
+        name: httpd
+        state: started
+        enabled: yes

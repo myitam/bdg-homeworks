@@ -1,0 +1,4 @@
+[AWS]
+13.58.100.148 ansible_user=ec2-user
+
+[AWS:vars]
