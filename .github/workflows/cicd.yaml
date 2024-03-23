@@ -1,6 +1,6 @@
 name: TheEnd
 env:
-  Image_tag: latest
+  Image_tag: ${{ github.run_number }}
 
 on:
   push:
