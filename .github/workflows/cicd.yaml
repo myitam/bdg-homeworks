@@ -1,6 +1,6 @@
-name: CI/CD Lesson 23
+name: TheEnd
 env:
-  Image_tag: ${{ github.run_number }}
+  Image_tag: TheEnd
 
 on:
   push:
@@ -20,7 +20,7 @@ jobs:
 
     - name: Build the Docker image
       run: |
-        cd lesson-23
+        cd TheEnd
         docker build . --file Dockerfile --tag myitam/nginx:${{ env.Image_tag }}
 
     - name: Login the Docker Hub
