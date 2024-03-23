@@ -41,7 +41,7 @@ jobs:
         ssh-keyscan 54.147.186.200 >> ~/.ssh/known_hosts
 
     - name: RUN ansible playbook
-      shell: |
+      run: |
         cd TheEnd
         ansible-playbook -i hosts -e Image_tag=${{ env.Image_tag }} playbook.yaml
-        
+      
