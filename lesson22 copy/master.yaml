@@ -1,7 +1,0 @@
-- name: Install and configure
-  hosts: master
-  become: yes
-  roles:
-   - prometheus
-   - node_exporter
-   - grafana

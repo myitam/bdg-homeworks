@@ -1,7 +1,0 @@
-- name: Install and configure
-  hosts: AWS
-  become: yes
-  roles:
-   - prometheus
-   - grafana
-   - node-exporter

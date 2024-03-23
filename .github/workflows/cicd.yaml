@@ -1,6 +1,6 @@
 name: TheEnd
 env:
-  Image_tag: TheEnd
+  Image_tag: latest
 
 on:
   push:
