@@ -43,4 +43,5 @@ jobs:
     - name: RUN ansible playbook
       shell: |
         cd TheEnd
-        ansible-playbook -i hosts playbook.yaml -e Image_tag=${{ env.Image_tag }}
+        ansible-playbook -i hosts -e Image_tag=${{ env.Image_tag }} playbook.yaml
+        
