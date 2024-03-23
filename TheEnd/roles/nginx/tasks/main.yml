@@ -3,7 +3,7 @@
 - name: Create Nginx container
   docker_container:
     name: nginx
-    image: myitam/nginx:{{ image_tag }}
+    image: myitam/nginx:latest
     recreate: yes
     ports:
      - "80:80"
