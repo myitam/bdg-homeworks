@@ -1,0 +1,7 @@
+---
+key_name: BDG           # Key used for SSH
+region: N. Virginia     # Region may affect response and pricing
+image: ami-080e1f13689e07408 # look in ec2 > ami (filter owner alias: amazon) or amis of manually launched instances
+id: "example testing"
+instance_type: t2.micro       # Choose instance type, check AWS for pricing
+sec_group: "test-security-group"
